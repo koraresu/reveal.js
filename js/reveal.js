@@ -373,6 +373,20 @@ var Reveal = (function(){
 			document.removeEventListener( 'DOMMouseScroll', onDocumentMouseScroll, false ); // FF
 			document.removeEventListener( 'mousewheel', onDocumentMouseScroll, false );
 		}
+		if( config.touch ) {
+			document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+			document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+			document.addEventListener( 'touchend', onDocumentTouchEnd, false );
+		}else{
+			document.removeEventListener( 'touchstart', onDocumentTouchStart, false );
+			document.removeEventListener( 'touchmove', onDocumentTouchMove, false );
+			document.removeEventListener( 'touchend', onDocumentTouchEnd, false );
+		}
+		if( config.keyboard ) {
+			document.addEventListener( 'keydown', onDocumentKeyDown, false );
+		}else{
+			document.removeEventListener( 'keydown', onDocumentKeyDown, false );
+		}
 
 		// 3D links
 		if( config.rollingLinks ) {
